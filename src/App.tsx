@@ -1,24 +1,24 @@
 import "./App.css";
-import Nav from "./Components/Nav";
-import About from "./Components/About";
-import { Recipes } from "./Recipes";
-import { RecipeProvider } from "./Components/context/RecipeContext";
+import Header from "./components/Header";
+import About from "./components/About";
+import RecipeList from "./components/Recipe/RecipeList";
+import { RecipeProvider } from "./components/RecipeContext/Context";
+import RecipeDetail from "./components/Recipe/RecipeDetail";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./components/LandingPage";
 
-import RecipeDetail from "./Components/Recipe/RecipeDetail";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import LandingPage from "./Components/LandingPage";
 export default function App() {
   return (
     <Router>
       <div className="App">
         <RecipeProvider>
-          <Nav />
-          <Switch>
-            <Route path="/" exact component={LandingPage} />
-            <Route path="/recipe" exact component={Recipes} />
-            <Route path="/recipe/:id" component={RecipeDetail} />
-            <Route path="/about" component={About} />
-          </Switch>
+          <Header />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/recipe" element={<RecipeList />} />
+            <Route path="/recipe/:id" element={<RecipeDetail />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
         </RecipeProvider>
       </div>
     </Router>

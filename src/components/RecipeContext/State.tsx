@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import axios from "axios";
 import Context from "./Context";
-import data from "../Database";
+import data from "../Data";
 import reducer from "./Reducer";
 import { FETCH_RECIPES, UPDATE_FAV_RECIPES, FETCH_RECIPE, TOGGLE_MODAL, TOGGLE_LOADING, SET_ERROR } from "../Types";
 
