@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Nav from "./Components/Nav";
+import About from "./Components/About";
+import { Recipes } from "./Recipes";
+import { RecipeProvider } from "./Components/context/RecipeContext";
 
-function App() {
+import RecipeDetail from "./Components/Recipe/RecipeDetail";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LandingPage from "./Components/LandingPage";
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <RecipeProvider>
+          <Nav />
+          <Switch>
+            <Route path="/" exact component={LandingPage} />
+            <Route path="/recipe" exact component={Recipes} />
+            <Route path="/recipe/:id" component={RecipeDetail} />
+            <Route path="/about" component={About} />
+          </Switch>
+        </RecipeProvider>
+      </div>
+    </Router>
   );
 }
-
-export default App;
