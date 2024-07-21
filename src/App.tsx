@@ -15,6 +15,10 @@ export default function App() {
 
   const [recipes, setRecipes] = useState(Data);
 
+  const addRecipe = (recipe: any) => {
+    setRecipes([...recipes, recipe]);
+  };
+
   const deleteRecipe = (id: number) => {
     setRecipes(recipes.filter((_, i) => i !== id));
   };
@@ -30,7 +34,7 @@ export default function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/recipes" element={<RecipeList recipes={recipes} deleteRecipe={deleteRecipe} />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/add-recipe" element={<RecipeForm addRecipe={() => {}} />} />
+            <Route path="/add-recipe" element={<RecipeForm addRecipe={addRecipe} />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </Router>
