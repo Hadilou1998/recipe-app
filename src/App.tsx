@@ -9,6 +9,7 @@ import { RecipeProvider } from "./components/RecipeContext/Context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Data from "./components/Data";
+import Image from "./i36528-ragout-minute-de-haricots-blancs.jpg"
 
 export default function App() {
   
@@ -26,6 +27,7 @@ export default function App() {
     <div className="App">
       <RecipeProvider>
         <Header />
+        <img src={Image} alt="image" />
         <Router>
           <Routes>
             <Route path="/" element={<LandingPage />} />
