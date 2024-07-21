@@ -1,44 +1,61 @@
+/* Définit la police de caractères par défaut pour l'application */
 .App {
   font-family: sans-serif;
 }
+
+/* Assure que html et body occupent toute la hauteur de la fenêtre */
 html,
 body {
   height: 100%;
 }
+
+/* Style de la barre de navigation */
 nav {
-  background: rgb(98, 165, 161);
-  padding: 0 15px;
+  background: rgb(98, 165, 161); /* Couleur de fond de la barre de navigation */
+  padding: 0 15px; /* Espacement intérieur */
 }
 
+/* Supprime les puces de la liste du menu */
 .menu {
   list-style-type: none;
 }
+
+/* Style du logo */
 .logo {
-  font-size: 30px;
-  padding: 7.5px 10px 7.5px 0;
-  letter-spacing: 1rem;
-}
-.item {
-  padding: 10px;
+  font-size: 30px; /* Taille de la police */
+  padding: 7.5px 10px 7.5px 0; /* Espacement intérieur */
+  letter-spacing: 1rem; /* Espacement entre les lettres */
 }
 
+/* Style des éléments du menu */
+.item {
+  padding: 10px; /* Espacement intérieur */
+}
+
+/* Disposition du menu en utilisant flexbox */
 .menu {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
+
+/* Style des liens du menu */
 .menu li a {
   display: block;
   padding: 15px 5px;
   color: white;
 }
+
+/* Style des liens du menu lorsqu'ils sont survolés */
 .item {
   width: 100%;
   text-align: center;
   display: none;
   font-size: 18px;
 }
+
+/* Style des liens du menu lorsqu'ils sont survolés */
 .item > a:hover {
   background: white;
   color: rgb(98, 165, 161);
