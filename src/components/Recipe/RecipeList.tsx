@@ -2,14 +2,23 @@ import React, { useContext } from "react";
 import RecipeIngredient from "./RecipeIngredient";
 import { RecipeContext } from "../RecipeContext/Context";
 
-function RecipeList({ recipes, deleteRecipe }: { recipes: any[], deleteRecipe: (index: number) => void }) {
+const RecipeList = () => {
+    
+    const { recipes, deleteRecipe } = useContext(RecipeContext);
+
     const handleDelete = (index: number) => {
         deleteRecipe(index);
     };
 
     return (
         <div className="recipe-list">
-            {recipes.map((recipe, index) => (
+            {recipes.map((recipe: {
+                name: string
+                photo: string
+                cuisine: string
+                preparation: string
+                ingredients: any[]
+            }, index: number) => (
                 <div key={index} className="recipe">
                     <h2>{recipe.name}</h2>
                     <img src={recipe.photo} alt={recipe.name} />
@@ -20,7 +29,7 @@ function RecipeList({ recipes, deleteRecipe }: { recipes: any[], deleteRecipe: (
                 </div>
             ))}
         </div>
-    );
+    )
 };
 
 export default RecipeList;
