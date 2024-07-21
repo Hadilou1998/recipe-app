@@ -54,7 +54,7 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem("search", searchTerm);
         setLoading(true);
         getRecipes(1);
-    }
+    };
 
     return (
         <RecipeContext.Provider value={{
