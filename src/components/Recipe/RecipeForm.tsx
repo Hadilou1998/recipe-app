@@ -77,5 +77,5 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ addRecipe }) => {
     );
 };
 
-// Exporte le composant RecipeForm
-export default RecipeForm;
+
+export default RecipeForm; // Exporte le composant RecipeForm

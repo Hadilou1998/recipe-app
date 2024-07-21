@@ -51,5 +51,4 @@ const About = () => {
     )
 };
 
-// Exportation du composant About pour utilisation dans d'autres fichiers
-export default About;
+export default About; // Exportation du composant About pour utilisation dans d'autres fichiers

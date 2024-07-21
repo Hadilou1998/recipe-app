@@ -51,4 +51,4 @@ const Contact = () => { // Retourne le JSX pour le composant Contact
     );
 };
 
-export default Contact;
+export default Contact; // Exportation du composant Contact en tant que composant par défaut

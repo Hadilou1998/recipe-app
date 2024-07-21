@@ -34,5 +34,5 @@ const Data = [
     }
 ];
 
-// Exporte le tableau Data pour qu'il puisse être utilisé dans d'autres fichiers
-export default Data;
+
+export default Data; // Exporte le tableau Data pour qu'il puisse être utilisé dans d'autres fichiers
