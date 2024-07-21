@@ -1,6 +1,6 @@
-const About = () => {
-    return (
-        <div className="about">
+const About = () => { // <!-- About Us Section -->
+    return ( 
+        <div className="about"> 
             <h1>About Us</h1>
             <p>
                 Welcome to our recipe website, where we bring you a variety of
