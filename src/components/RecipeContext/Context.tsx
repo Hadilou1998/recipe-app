@@ -51,7 +51,7 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
 
     const searchRecipes = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        localStorage.setItem("search", (searchTerm));
+        localStorage.setItem("search", searchTerm);
         setLoading(true);
         getRecipes(1);
     }
