@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 interface Recipe {
-    id: number;
     name: string;
     cuisine: string;
     photo: string;
@@ -23,7 +22,6 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ addRecipe }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newRecipe: Recipe = {
-            id: 0,
             name,
             cuisine,
             photo,

@@ -15,8 +15,8 @@ export default function App() {
 
   const [recipes, setRecipes] = useState(Data);
 
-  const deleteRecipe = (index: number) => {
-    setRecipes(recipes.filter((_, i) => i !== index));
+  const deleteRecipe = (id: number) => {
+    setRecipes(recipes.filter((_, i) => i !== id));
   };
 
   return (
