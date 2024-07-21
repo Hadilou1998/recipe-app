@@ -1,17 +1,31 @@
 const Data = [
     {
-        name: "Pizza",
-        cuisine: "Italian",
-        photo: "https://img.freepik.com/photos-gratuite/delicieuse-pizza-sudjuk_141793-17597.jpg?t=st=1721553961~exp=1721557561~hmac=7cf67ed51dbf3e06630632aa3ef765f000c8233286e452a38ebfebca709de8be&w=1380",
-        ingredients: ["Pizza dough", "Tomato sauce", "Mozzarella cheese", "Basil"],
-        preparation: "Preheat oven to 450°F. Roll out pizza dough and place on a baking sheet. Spread tomato sauce evenly over dough. Top with mozzarella cheese and basil. Bake for 10-15 minutes or until cheese is melted and crust is golden brown."
+        name: "Pizza au chou-fleur",
+        cuisine: "Italienne",
+        photo: "https://recette-cuisine-du-monde.fr/wp-content/uploads/2020/12/pizza_chou_fleur-290x300.jpg",
+        ingredients: ["Pâte à pizza", "Chou-fleur", "Sauce tomate", "Mozzarella", "Oignons", "Câpres"],
+        preparation: "Étalez la pâte à pizza sur une plaque à pizza. Ajoute le chou-fleur, la sauce tomate, la mozzarella, les oignons et les câpres. Enroule la pizza et fait cuire à 200 degrés pendant 10 minutes."
     },
     {
-        name: "Burrito",
-        cuisine: "Mexican",
-        photo: "https://img.freepik.com/photos-gratuite/buritto-frites-table_140725-4492.jpg?t=st=1721554157~exp=1721557757~hmac=7412fdc9d0bca0f8e5c45dbd6dab4f780c884eefa157004e2dc68356210a6e9d&w=740",
-        ingredients: ["Tortillas", "Ground beef", "Rice", "Salsa", "Cheese"],
-        preparation: "Cook ground beef in a skillet until browned. Add rice and salsa to skillet. Cook until rice is tender. Assemble burrito by placing a tortilla, filling, and toppings on top of each other. Roll up burrito and serve."
+        name: "Galette de Haricots Rouge",
+        cuisine: "Mexicaine",
+        photo: "https://recette-cuisine-du-monde.fr/assets/images/recette-galette-haricot-rouge.jpg",
+        ingredients: ["Haricots rouges", "Oignons", "Crème fraîche", "Mozzarella", "Sauce tomate", "Sel", "Poivre"],
+        preparation: "Épluchez les haricots rouges et les coupez en petits morceaux. Faites-les cuire à l'eau bouillante pendant 10 minutes. Égouttez-les et réservez. Dans une poêle, faites revenir les oignons émincés avec de l'huile d'olive. Ajoutez les haricots rouges, la crème fraîche, la mozzarella, la sauce tomate, le sel et le poivre. Mélangez bien et faites cuire à feu doux pendant 10 minutes."
+    },
+    {
+        name: "Maki Maison",
+        cuisine: "Japonaise",
+        photo: "https://recette-cuisine-du-monde.fr/assets/images/recette-maki.jpg",
+        ingredients: ["Sushi Rice", "Nori", "Crab Meat", "Avocado", "Seaweed", "Soy Sauce"],
+        preparation: "Dans un bol, mélangez le riz sushi avec la sauce soja. Ajoutez les ingrédients de votre choix (crabe, avocat, câpres, etc.). Faites cuire le sushi dans un moule à maki pendant 10 minutes."
+    },
+    {
+        name: "Machas à la Parmesana",
+        cuisine: "Chilienne",
+        photo: "https://recette-cuisine-du-monde.fr/assets/images/recette_machas_parmesana.jpg",
+        ingredients: ["Machas", "Parmesan", "Sauce tomate", "Oignons", "Câpres", "Sel", "Poivre"],
+        preparation: "Dans une poêle, faites revenir les machas avec de l'huile d'olive. Ajoutez les oignons émincés, la sauce tomate, le parmesan, les câpres, le sel et le poivre. Faites cuire à feu doux pendant 10 minutes."
     }
 ];
 
