@@ -34,7 +34,7 @@ nav {
 
 /* Disposition du menu en utilisant flexbox */
 .menu {
-  display: flex;
+  display: flex; 
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
@@ -47,7 +47,7 @@ nav {
   color: white;
 }
 
-/* Style des liens du menu lorsqu'ils sont survolés */
+/* Style des éléments du menu */
 .item {
   width: 100%;
   text-align: center;
@@ -55,11 +55,12 @@ nav {
   font-size: 18px;
 }
 
-/* Style des liens du menu lorsqu'ils sont survolés */
+/* Style des liens du menu au survol */
 .item > a:hover {
   background: white;
   color: rgb(98, 165, 161);
 }
+
 
 /* Tablet menu */
 @media all and (min-width: 700px) {
