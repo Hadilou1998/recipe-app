@@ -47,7 +47,7 @@ const RecipeForm: React.FC<RecipeFormProps> = ({ addRecipe }) => {
                     </div>
                     <div className="half-input">
                         <label>Photo:</label>
-                        <input type="text" name="photo" value={photo} onChange={(e) => setPhoto(e.target.value)} placeholder='Photo'/>
+                        <input type="text" name="photo" value={photo} onChange={(e) => setPhoto(e.target.value)} placeholder='Photo URL'/>
                     </div>
                     <div className="half-input">
                         <label>Ingrédients:</label>

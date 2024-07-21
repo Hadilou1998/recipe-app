@@ -6,7 +6,7 @@ const Favorites = () => {
 
     return (
         <div className="favorite-container">
-            <h1>Mes recettes favorites</h1>
+            <h1>Mes recettes favorites :</h1>
             <div className="favorite-recipe">
                 {recipes.map((recipe, index) => (
                     <div key={index} className="favorite-card">
