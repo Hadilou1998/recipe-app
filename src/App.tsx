@@ -43,13 +43,15 @@ export default function App() {
     <div className="App">
       <RecipeProvider>
         <Header />
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/recipes" element={<RecipeList recipes={recipes} deleteRecipe={deleteRecipe} />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/add-recipe" element={<RecipeForm handleAddRecipe={addRecipe} />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/recipes" element={<RecipeList recipes={recipes} deleteRecipe={deleteRecipe} />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/add-recipe" element={<RecipeForm handleAddRecipe={addRecipe} />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Router>
       </RecipeProvider>
     </div>
   );
