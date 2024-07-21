@@ -10,29 +10,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Data from "./components/Data";
 
-interface Recipe {
-  id: number;
-  name: string;
-  cuisine: string;
-  photo: string;
-  ingredients: string;
-  preparation: string;
-}
-
 export default function App() {
   
-  const [recipes, setRecipes] = useState<Recipe[]>(Data.map((recipe, index) => ({
-    ...recipe,
-    id: index + 1,
-    ingredients: recipe.ingredients.join(', ')
-  })));
+  const [recipes, setRecipes] = useState(Data);
 
-  const addRecipe = (recipe: Omit<Recipe, 'id'>) => {
-    const newRecipe: Recipe = {
-      ...recipe,
-      id: recipes.length + 1
-    };
-    setRecipes([...recipes, newRecipe]);
+  const addRecipe = (recipe: any) => {
+    setRecipes([...recipes, recipe]);
   };
 
   const deleteRecipe = (index: number) => {
@@ -48,7 +31,7 @@ export default function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/recipes" element={<RecipeList recipes={recipes} deleteRecipe={deleteRecipe} />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/add-recipe" element={<RecipeForm handleAddRecipe={addRecipe} />} />
+            <Route path="/add-recipe" element={<RecipeForm addRecipe={addRecipe} />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </Router>

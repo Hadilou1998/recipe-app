@@ -1,40 +1,36 @@
 import React, { useState } from 'react';
 
 interface Recipe {
+    id: number;
     name: string;
     cuisine: string;
     photo: string;
-    ingredients: string;
-    preparation: string;
+    ingredients: string[];
+    preparation: string[];
 }
 
-const RecipeForm = ({ handleAddRecipe }: { handleAddRecipe: (recipe: Recipe) => void }) => {
-    const [recipe, setRecipe] = useState<Recipe>({
-        name: "",
-        cuisine: "",
-        photo: "",
-        ingredients: "",
-        preparation: ""
-    });
-    
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setRecipe({
-            ...recipe,
-            [name]: value
-        });
-    }
+interface RecipeFormProps {
+    addRecipe: (recipe: Recipe) => void;
+}
+
+const RecipeForm: React.FC<RecipeFormProps> = ({ addRecipe }) => {
+    const [name, setName] = useState('');
+    const [cuisine, setCuisine] = useState('');
+    const [photo, setPhoto] = useState('');
+    const [ingredients, setIngredients] = useState('');
+    const [preparation, setPreparation] = useState('');
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        handleAddRecipe(recipe);
-        setRecipe({
-            name: "",
-            cuisine: "",
-            photo: "",
-            ingredients: "",
-            preparation: ""
-        });
+        const newRecipe: Recipe = {
+            id: 0,
+            name,
+            cuisine,
+            photo,
+            ingredients: ingredients.split(','),
+            preparation: preparation.split(',')
+        };
+        addRecipe(newRecipe);
     }
 
     return (
@@ -43,28 +39,28 @@ const RecipeForm = ({ handleAddRecipe }: { handleAddRecipe: (recipe: Recipe) => 
                 <div className="create-input-container">
                     <div className="half-input">
                         <label>Nom de la recette:</label>
-                        <input type="text" name="name" value={recipe.name} onChange={handleChange} placeholder='Name'/>
+                        <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder='Name'/>
                     </div>
                     <div className="half-input">
                         <label>Cuisine:</label>
-                        <input type="text" name="cuisine" value={recipe.cuisine} onChange={handleChange} placeholder='Cuisine'/>
+                        <input type="text" name="cuisine" value={cuisine} onChange={(e) => setCuisine(e.target.value)} placeholder='Cuisine'/>
                     </div>
                     <div className="half-input">
                         <label>Photo:</label>
-                        <input type="text" name="photo" value={recipe.photo} onChange={handleChange} placeholder='Photo URL'/>
+                        <input type="text" name="photo" value={photo} onChange={(e) => setPhoto(e.target.value)} placeholder='Photo'/>
                     </div>
                     <div className="half-input">
                         <label>Ingrédients:</label>
-                        <input type="text" name="ingredients" value={recipe.ingredients} onChange={handleChange} placeholder='Ingredients'/>
+                        <textarea name="ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} placeholder='Ingredients'/>
                     </div>
                     <div className="half-input">
                         <label>Préparation:</label>
-                        <textarea name="preparation" value={recipe.preparation} onChange={handleChange} placeholder='Preparation'/>
+                        <textarea name="preparation" value={preparation} onChange={(e) => setPreparation(e.target.value)} placeholder='Preparation'/>
                     </div>
                     <button type="submit">Ajouter</button>
                 </div>
             </form>
-        </div>   
+        </div>
     );
 };
 
