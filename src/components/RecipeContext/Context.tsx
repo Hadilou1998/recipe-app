@@ -9,7 +9,7 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
     const base_url = process.env.REACT_APP_API_URL;
     const api_key = process.env.REACT_APP_API_KEY;
 
-    const [favoritesList, setFavoritesList] = useState([]);
+    const [favoriteRecipe, setFavoriteRecipe] = useState([]);
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [recipesList, setRecipesList] = useState([]);
     const [recipeDetail, setRecipeDetail] = useState([]);
@@ -57,15 +57,13 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
 
     return (
         <RecipeContext.Provider value={{
-            loading,
-            favorites: favoritesList,
-            search: searchTerm,
-            setSearch: setSearchTerm,
             recipesList,
-            recipeDetail,
-            favoritesList,
-            updateSearch,
+            loading,
+            totalPages,
             searchRecipes,
+            updateSearch,
+            favoriteRecipe,
+            handlePageClick,
         }}>
             {children}
         </RecipeContext.Provider>
