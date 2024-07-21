@@ -24,18 +24,18 @@ export default function App() { // Définition du composant fonctionnel App
   };
 
   return ( // Retourne le JSX à rendre
-    <div className="App"> // Div conteneur principal de l'application
-      <RecipeProvider> // Fournisseur de contexte pour les recettes
-        <Router> // Composant de routage principal
-          <Header /> // Affichage du composant Header
-          <h1>Bienvenue sur notre application de recettes</h1> // Titre principal de l'application
-          <img src={Image} alt="Image" className="image" /> // Affichage de l'image avec une classe CSS
-          <Routes> // Définition des routes de l'application
-            <Route path="/" element={<LandingPage />} /> // Route pour la page d'accueil
-            <Route path="/recipes" element={<RecipeList recipes={recipes} deleteRecipe={deleteRecipe} />} /> // Route pour la liste des recettes
-            <Route path="/favorites" element={<Favorites />} /> // Route pour les recettes favorites
-            <Route path="/add-recipe" element={<RecipeForm addRecipe={addRecipe} />} /> // Route pour ajouter une recette
-            <Route path="/about" element={<About />} /> // Route pour la page About
+    <div className="App"> {/* Wrapper autour de l'application */}
+      <RecipeProvider> {/* Wrapper autour de RecipeProvider */}
+        <Router> {/* Wrapper autour de Router */}
+          <Header /> {/* Appel du composant Header */}
+          <h1>Bienvenue sur notre application de recettes</h1> {/* Titre de la page */}
+          <img src={Image} alt="Image" className="image" /> {/* Affichage de l'image */}
+          <Routes> {/* Wrapper autour de Routes */}
+            <Route path="/" element={<LandingPage />} /> {/* Route pour la page d'accueil */}
+            <Route path="/recipes" element={<RecipeList recipes={recipes} deleteRecipe={deleteRecipe} />} /> {/* Route pour la liste des recettes */}
+            <Route path="/favorites" element={<Favorites />} /> {/* Route pour la page des recettes favorites */}
+            <Route path="/add-recipe" element={<RecipeForm addRecipe={addRecipe} />} /> {/* Route pour la page d'ajout de recette */}
+            <Route path="/about" element={<About />} /> {/* Route pour la page " propos" */}
           </Routes>
         </Router>
       </RecipeProvider>

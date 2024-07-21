@@ -3,18 +3,17 @@ import { RecipeContext, RecipeProvider } from "./RecipeContext/Context"; // Impo
 import RecipeDetail from "./Recipe/RecipeDetail"; // Importation du composant RecipeDetail
 import RecipeList from "./Recipe/RecipeList"; // Importation du composant RecipeList
 
-const Favorites = () => { // Définition du composant fonctionnel Favorites
+const Favorites = () => {
+    const context = useContext(RecipeContext);
 
-    const context = useContext(RecipeContext); // Utilisation du hook useContext pour accéder à RecipeContext
-
-    return ( // Retourne le JSX à rendre
-        <div className="favorite-container"> // Div conteneur pour les recettes favorites
-            <h1>Mes recettes favorites :</h1> // Titre de la section des recettes favorites
-            {context.favorites.slice(0, 4).map((recipe: any, index: number) => ( // Parcours des 4 premières recettes favorites
-                <div key={index} className="favorite-recipe"> // Div pour chaque recette favorite avec une clé unique
+    return (
+        <div className="favorite-container">
+            <h1>Mes recettes favorites :</h1>
+            {context.favoriteRecipe.map((recipe: any, index: number) => (
+                <div key={index} className="favorite-recipe">
                     <RecipeList 
-                    recipes={[recipe]} // Passage de la recette en tant que tableau au composant RecipeList
-                    deleteRecipe={() => context.deleteFavorite(index)} // Passage d'une fonction pour supprimer la recette des favorites
+                        recipes={[recipe]}
+                        deleteRecipe={() => context.deleteFavorite(index)}
                     />
                 </div>
             ))}

@@ -34,18 +34,19 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
     };
 
     const getRecipes = async (page: number) => {
+        const from = (page - 1) * perPage;
+        const to = from + perPage;
+        console.log(from, to);
         const url = `${base_url}search?apiKey=${api_key}&query=${searchTerm}&from=${
             (page - 1) * perPage
-        }&to=${page * perPage}`;
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            setRecipesList(data.hits);
-            setTotalPages(Math.ceil(data.count / perPage));
-            setLoading(false);
-        } catch (error) {
-            setLoading(false);
-        }
+        }&to=${from + perPage}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        setRecipesList(data.hits.slice(from, to));
+        setFavoriteRecipe(data.hits);
+        setLoading(false);
+        setTotalPages(data.hits.length / perPage);
+        return recipesList;
     };
 
     const searchRecipes = (e: React.FormEvent<HTMLFormElement>) => {
