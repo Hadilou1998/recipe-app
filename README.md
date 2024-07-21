@@ -1,46 +1,75 @@
-# Getting Started with Create React App
+# Recipe App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet est une application web de recettes qui permet aux utilisateurs de créer, consulter et supprimer des recettes.
+L'application est construite à l'aide de ReactJS et stylisée avec CSS.
+Il fournit des fonctionnalités de base telles que l'ajout de recettes, la suppression de recettes et la recherche de recettes.
 
-## Available Scripts
+## Fonctionnalités
 
-In the project directory, you can run:
+. Ajouter une nouvelle recette avec des champs pour le nom, la cuisine, l'URL de l'image, les ingrédients et les étapes de préparation.
 
-### `npm start`
+. Consulter une liste de recettes avec des informations détaillées sur chaque recette, y compris le nom, la cuisine, l'URL de l'image et les ingrédients.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+. Supprimer une recette existante en cliquant sur un bouton "Supprimer" sur chaque recette.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clonez le dépôt GitHub à l'aide de la commande suivante :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+git clone https://github.com/Hadilou1998/recipe-app.git
+CSS
 
-### `npm run build`
+2. Accedez au dossier du projet et installez les dépendances avec la commande suivante :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd recipe-app
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Lancez l'application avec la commande suivante :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm start
 
-### `npm run eject`
+4. Ouvrez votre navigateur web et accédez à l'URL http://localhost:3000 pour utiliser l'application.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Utilisation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+. Une fois sur la page d'accueil, vous pouvez ajouter une nouvelle recette en cliquant sur le bouton "Ajouter une recette".
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+. La page "Liste des recettes" affiche une liste de recettes avec des informations détaillées sur chaque recette.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+. Vous pouvez supprimer une recette en cliquant sur le bouton "Supprimer" sur chaque recette.
 
-## Learn More
+## Stylisation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+. L'application est stylisée avec CSS pour fournir une interface utilisateur conviviale et visuellement attrayante.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+. Les couleurs de l'application sont définies dans le fichier "src/App.css" et peuvent être modifiées en fonction de vos préférences.
+
+. Les polices de caractères utilisées sont définies dans le fichier "src/App.css" et peuvent également être modifiées en fonction de vos préférences.
+
+. Les tailles de police, les marges et les espacements sont définis dans le fichier "src/App.css" et peuvent également être modifiés en fonction de vos préférences.
+
+. L'application est responsive et s'adapte automatiquement à différentes tailles d'écran.
+
+## Critère de réussite
+
+Le projet répond aux critères de réussite suivants :
+
+. Fonctionnalité 👍
+
+. Les utilisateurs peuvent ajouter des recettes.
+
+. Les utilisateurs peuvent consulter une liste de recettes. La nouvelle recette est ajoutée à la fin de la liste des recettes.
+
+. Les utilisateurs peuvent supprimer une recette.
+
+. CSS est utilisé pour styliser l'interface utilisateur.
+
+. Organisation du code ReactJS et Typescript 👍
+
+. L'application utilise plusieurs composants ReactJS et Typescript pour gérer l'interface utilisateur.
+
+. Les données de recette sont stockées dans un tableau dans le composant App.
+
+. Organisation générale du code 👍
+
+. La duplication de code est minimisée.
