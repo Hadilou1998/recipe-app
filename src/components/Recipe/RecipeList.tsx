@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import RecipeIngredient from "./RecipeIngredient";
 import { RecipeContext } from "../RecipeContext/Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
