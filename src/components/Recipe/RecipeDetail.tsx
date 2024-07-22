@@ -14,7 +14,12 @@ function RecipeDetail({ recipe, handleRecipe }: { recipe: {
 }, handleRecipe: (id: number) => void }){
 
     // Extraction de la fonction addToFavorites du contexte
-    const { addToFavorites } = useContext(RecipeContext); 
+    const { addToFavorites } = useContext(RecipeContext);
+
+    // Fonction pour ajouter une recette aux favoris
+    const handleAddToFavorites = () => {
+        addToFavorites(recipe.id);
+    }
     
     // Vérification si une recette est sélectionnée
     if (!recipe) {
@@ -47,8 +52,8 @@ function RecipeDetail({ recipe, handleRecipe }: { recipe: {
                             <td>
                                 <p>{recipe.preparation.join(", ")}</p>
                             </td>
-                            <td><button onClick={() => addToFavorites(recipe)}>Ajouter aux favoris</button></td>
-                            <td><button onClick={() => handleRecipe(recipe.id)}>Supprimer</button></td>
+                            <td><button onClick={handleAddToFavorites}>Ajouter aux favoris</button></td>
+                            <td><button onClick={() => handleRecipe(recipe.id)}>Supprimer</button></td>                        
                         </tr>
                     )}
                 </tbody>

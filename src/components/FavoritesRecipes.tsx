@@ -9,39 +9,21 @@ const FavoritesRecipes = ({ recipes, removeFavorite }: { recipes: any[], removeF
   const context = useContext(RecipeContext);
   const [favorites, setFavorites] = useState<any[]>([]);
 
-  // Utilisation du hook useEffect pour mettre à jour les favoris lorsque les favoris sont modifiés
   useEffect(() => {
-    setFavorites(context.favorites);
-  }, [context.favorites]);
+    if (context) {
+      setFavorites(context.favorites);
+    }
+  }, [context]);
 
-  // Utilisation du hook useParams pour récupérer l'ID de la recette à afficher
-  const { id } = useParams();
-  const selectedRecipe = recipes.find((recipe) => recipe.id === parseInt(id || ""));
-
-  const handleRecipe = (id: number) => {
-    // Implement the handleRecipe function here
-    console.log(`Handling recipe with id: ${id}`);
-  };
-
-  if (selectedRecipe) {
-    return (
-      <div className="recipe-container">
-        <RecipeDetail recipe={selectedRecipe} handleRecipe={handleRecipe} />
-      </div>
-    );
-  }
-
-  if (favorites.length === 0) {
+  if (!favorites || favorites.length === 0) {
     return (
       <div className="favorite-container">
         <h1>Mes recettes favorites</h1>
-        <p>Vous n'avez pas encore ajouté de recette à vos favoris.</p>
+        <p>Vous n'avez pas encore de recettes favorites.</p>
       </div>
     );
   }
-  // Si aucune recette n'est sélectionnée, afficher la liste des favoris
-  // et les actions de suppression
-// Utilisation du contexte RecipeContext pour accéder aux favoris et à la fonction de suppression
+
   return (
     <div className="favorite-container">
       <h1>Mes recettes favorites</h1>
@@ -52,28 +34,30 @@ const FavoritesRecipes = ({ recipes, removeFavorite }: { recipes: any[], removeF
             <th>Nom</th>
             <th>Cuisine</th>
             <th>Photo</th>
-            <th>Ingredients</th>
+            <th>Ingrédients</th>
             <th>Préparation</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {context.favorites.map((recipe: any, index: number) => (
-            <tr key={index} className={recipe.name === "Pizza au chou-fleur" ? "pizza" : recipe.name === "Galette de haricots rouges" ? "galette" : ""}>
+          {favorites.map((recipe, index) => (
+            <tr key={recipe.id}>
               <td>{recipe.name}</td>
               <td>{recipe.cuisine}</td>
+              <td><img src={recipe.photo} alt={recipe.name} width="100" height="100" /></td>
               <td>
-                <img src={recipe.image} alt={recipe.name} />
+                <p>{recipe.ingredients.join(", ")}</p>
               </td>
-              <td>{recipe.ingredients}</td>
-              <td>{recipe.preparation}</td>
-              <td><button onClick={() => context.deleteRecipe(index)}>Supprimer</button></td>
+              <td>
+                <p>{recipe.preparation.join(", ")}</p>
+              </td>
+              <td><button onClick={() => removeFavorite(index)}>Supprimer des favoris</button></td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  );
+  ); 
 };
 
 export default FavoritesRecipes;

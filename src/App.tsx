@@ -7,7 +7,7 @@ import RecipeForm from "./components/Recipe/RecipeForm"; // Importation du compo
 import RecipeDetail from "./components/Recipe/RecipeDetail"; // Importation du composant RecipeDetail
 import Favorites from "./components/FavoritesRecipes"; // Importation du composant FavoritesRecipes
 import { RecipeProvider } from "./components/RecipeContext/Context"; // Importation de RecipeProvider depuis le contexte
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom"; // Importation des composants de routage de react-router-dom
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Importation des composants de routage de react-router-dom
 import LandingPage from "./components/LandingPage"; // Importation du composant LandingPage
 import Data from "./components/Data"; // Importation des données initiales
 import Image from "./i36528-ragout-minute-de-haricots-blancs.jpg"; // Importation de l'image
@@ -62,19 +62,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/recipes" element={<RecipeList deleteRecipe={deleteRecipe} recipes={recipes} addToFavorites={addToFavorites} />} />
-            <Route path="/recipe/:id" element={
-              <RecipeDetail 
-                recipe={recipes.find(r => r.id === parseInt(useParams().id || '0')) || {
-                  id: 0,
-                  name: '',
-                  cuisine: '',
-                  photo: '',
-                  ingredients: [],
-                  preparation: []
-                }} 
-                handleRecipe={deleteRecipe} 
-              />
-            } />
+            <Route path="/recipe/:id" element={<RecipeDetail recipe={recipes[0]} handleRecipe={(id: number) => {}} />} />
             <Route path="/favorites" element={<Favorites recipes={favorites} removeFavorite={removeFavorite} />} />
             <Route path="/add-recipe" element={<RecipeForm addRecipe={addRecipe} />} />
             <Route path="/about" element={<About />} />
