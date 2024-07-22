@@ -1,21 +1,27 @@
-import React, { useContext } from "react"; // Importation de React et du hook useContext
-import RecipeContext from "../RecipeContext/Context"; // Importation de RecipeContext depuis le fichier de contexte
+// Importation de React et du hook useContext
+import React, { useContext } from "react";
+// Importation de RecipeContext depuis le fichier de contexte
+import RecipeContext from "../RecipeContext/Context";
 
+// Définition du composant RecipeDetail avec ses props typées
 function RecipeDetail({ recipe, handleRecipe }: { recipe: {
     name: string;
     cuisine: string;
     photo: string;
     ingredients: string[];
     preparation: string[];
-    id: number; // Added id property
-}, handleRecipe: (id: number) => void }){ // Modification du type de props pour inclure handleRecipe
+    id: number;
+}, handleRecipe: (id: number) => void }){
 
+    // Extraction de la fonction addToFavorites du contexte
     const { addToFavorites } = useContext(RecipeContext); 
     
+    // Vérification si une recette est sélectionnée
     if (!recipe) {
         return <div>Aucune recette sélectionnée</div>;
     }
 
+    // Rendu du composant
     return (
         <div className="recipe-list">
             <table>
@@ -51,4 +57,5 @@ function RecipeDetail({ recipe, handleRecipe }: { recipe: {
     );
 };
 
-export default RecipeDetail; // Exportation du composant RecipeDetail comme exportation par défaut
+// Exportation du composant RecipeDetail
+export default RecipeDetail;

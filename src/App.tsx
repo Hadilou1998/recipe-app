@@ -27,6 +27,8 @@ export default function App() {
     preparation: Array.isArray(recipe.preparation) ? recipe.preparation : [recipe.preparation]
   })));
 
+  const [favorites, setFavorites] = useState<Recipe[]>([]);
+
   const addRecipe = (recipe: Omit<Recipe, 'id'>) => {
     const newRecipe: Recipe = {
       ...recipe,
@@ -39,8 +41,15 @@ export default function App() {
     setRecipes(recipes.filter((recipe) => recipe.id !== id));
   };
 
-  const addToFavorites = (index: number) => {
-    // Ajoutez votre code ici pour ajouter une recette à la liste des favoris
+  const addToFavorites = (id: number) => {
+    const recipeToAdd = recipes.find(recipe => recipe.id === id);
+    if (recipeToAdd && !favorites.some(fav => fav.id === id)) {
+      setFavorites([...favorites, recipeToAdd]);
+    }
+  };
+
+  const removeFavorite = (id: number) => {
+    setFavorites(favorites.filter(recipe => recipe.id !== id));
   };
 
   return (
@@ -53,8 +62,20 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/recipes" element={<RecipeList deleteRecipe={deleteRecipe} recipes={recipes} addToFavorites={addToFavorites} />} />
-            <Route path="/recipe/:id" element={<RecipeDetail recipe={recipes[0]} handleRecipe={deleteRecipe} />} />
-            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/recipe/:id" element={
+              <RecipeDetail 
+                recipe={recipes.find(r => r.id === parseInt(useParams().id || '0')) || {
+                  id: 0,
+                  name: '',
+                  cuisine: '',
+                  photo: '',
+                  ingredients: [],
+                  preparation: []
+                }} 
+                handleRecipe={deleteRecipe} 
+              />
+            } />
+            <Route path="/favorites" element={<Favorites recipes={favorites} removeFavorite={removeFavorite} />} />
             <Route path="/add-recipe" element={<RecipeForm addRecipe={addRecipe} />} />
             <Route path="/about" element={<About />} />
           </Routes>
