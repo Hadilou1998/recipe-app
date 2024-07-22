@@ -34,22 +34,17 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
     // Initialisation de l'état de chargement
     const [loading, setLoading] = useState(true);
     // Initialisation de l'état pour la page courante
-    const [currentPage, setCurrentPage] = useState(1);
+    const [pageCount, setPageCount] = useState(1);
     // Initialisation de l'état pour le nombre total de pages
     const [totalPages, setTotalPages] = useState(0);
 
     // Fonction pour gérer le clic sur une page
     const handlePageClick = (e: { selected: number }) => {
         const newPage = e.selected;
-        setCurrentPage(newPage);
+        setPageCount(newPage);
         setLoading(true);
         getRecipes(newPage);
     };
-
-    // Effet pour charger les recettes lors du changement de page
-    useEffect(() => {
-        getRecipes(currentPage);
-    }, [currentPage]);
 
     // Fonction pour mettre à jour le terme de recherche
     const updateSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +55,6 @@ export function RecipeProvider({ children }: { children: React.ReactNode }) {
     const getRecipes = async (page: number) => {
         const from = (page - 1) * perPage;
         const to = from + perPage;
-        console.log(from, to);
         const url = `${base_url}search?apiKey=${api_key}&query=${searchTerm}&from=${
             (page - 1) * perPage
         }&to=${from + perPage}`;

@@ -4,36 +4,26 @@ import RecipeContext from "./RecipeContext/Context"; // Importation de RecipeCon
 import RecipeDetail from "./Recipe/RecipeDetail"; // Importation du composant RecipeDetail
 import RecipeList from "./Recipe/RecipeList"; // Importation du composant RecipeList
 
-export interface Recipe {
-    id: number;
-    name: string;
-    description: string;
-    ingredients: string[];
-    instructions: string[];
-    isFavorite: boolean;
-}
 
 // Composant Favorites qui affiche les recettes favorites et les détails d'une recette en fonction de l'ID passé dans l'URL
 function Favorites() {
-    const { id } = useParams<{ id: string }>(); // Récupération de l'ID de la recette depuis l'URL
-    const context = useContext(RecipeContext); // Récupération du contexte RecipeContext
+    const context = useContext(RecipeContext); // Utilisation du hook useContext pour accéder à RecipeContext
+    const { id } = useParams(); // Utilisation du hook useParams pour récupérer l'ID de la recette passé dans l'URL
 
-
-    // Fonction pour supprimer une recette de la liste des favorites
+    // fonction pour supprimer une recette de l'état favorites
     const deleteRecipe = (index: number) => {
-        context.deleteRecipe(index); // Appel de la fonction deleteRecipe du contexte pour supprimer la recette de la liste des favorites
+        context.deleteFavoriteRecipe(index); // Appel de la fonction deleteFavoriteRecipe dans RecipeContext
     }
 
-    // Retourne le JSX à afficher selon les conditions ci-dessus
-    return (
-        <div className="container">
-            {id? (
-                <RecipeDetail id={parseInt(id)} addToFavorites={context.addToFavorites} />
-            ) : (
-                <RecipeList recipes={context.favoriteRecipe} deleteRecipe={deleteRecipe} />
-            )}
-        </div>
-    );
+    // Si aucune recette n'est présente dans l'état favorites, on affiche un message d'erreur
+    if (context.favorites.length === 0) {
+        return (
+            <div>
+                <h2>Favorites</h2>
+                <p>No favorite recipes found.</p>
+            </div>
+        );
+    }
 };
 
 export default Favorites; // Exportation du composant Favorites comme exportation par défaut
