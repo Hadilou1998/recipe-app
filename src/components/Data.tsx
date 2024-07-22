@@ -2,6 +2,7 @@
 const Data = [
     {
         // Objet représentant une recette de pizza au chou-fleur
+        id: 1, // Identifiant unique de la recette
         name: "Pizza au chou-fleur", // Nom de la recette
         cuisine: "Italienne", // Type de cuisine
         photo: "https://recette-cuisine-du-monde.fr/wp-content/uploads/2020/12/pizza_chou_fleur-290x300.jpg", // URL de la photo
@@ -10,6 +11,7 @@ const Data = [
     },
     {
         // Objet représentant une recette de galette de haricots rouges
+        id: 2, // Identifiant unique de la recette
         name: "Galette de Haricots Rouge", // Nom de la recette
         cuisine: "Mexicaine", // Type de cuisine
         photo: "https://recette-cuisine-du-monde.fr/assets/images/recette-galette-haricot-rouge.jpg", // URL de la photo
@@ -18,6 +20,7 @@ const Data = [
     },
     {
         // Objet représentant une recette de maki maison
+        id: 3, // Identifiant unique de la recette
         name: "Maki Maison", // Nom de la recette
         cuisine: "Japonaise", // Type de cuisine
         photo: "https://recette-cuisine-du-monde.fr/assets/images/recette-maki.jpg", // URL de la photo
@@ -26,6 +29,7 @@ const Data = [
     },
     {
         // Objet représentant une recette de machas à la parmesana
+        id: 4, // Identifiant unique de la recette
         name: "Machas à la Parmesana", // Nom de la recette
         cuisine: "Chilienne", // Type de cuisine
         photo: "https://recette-cuisine-du-monde.fr/assets/images/recette_machas_parmesana.jpg", // URL de la photo
