@@ -53,7 +53,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/recipes" element={<RecipeList deleteRecipe={deleteRecipe} recipes={recipes} addToFavorites={addToFavorites} />} />
-            <Route path="/recipe/:id" element={<RecipeDetail />} />
+            <Route path="/recipe/:id" element={<RecipeDetail recipe={recipes[0]} handleRecipe={deleteRecipe} />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/add-recipe" element={<RecipeForm addRecipe={addRecipe} />} />
             <Route path="/about" element={<About />} />
