@@ -5,25 +5,30 @@ import RecipeDetail from "./Recipe/RecipeDetail"; // Importation du composant Re
 import RecipeList from "./Recipe/RecipeList"; // Importation du composant RecipeList
 
 
+interface Favorite {
+    id: number;
+    name: string;
+    cuisine: string;
+    photo: string;
+    ingredients: string[];
+    preparation: string[];
+}
+
 // Composant Favorites qui affiche les recettes favorites et les détails d'une recette en fonction de l'ID passé dans l'URL
-function Favorites() {
+const Favorites: React.FC = () => {
     const context = useContext(RecipeContext); // Utilisation du hook useContext pour accéder à RecipeContext
-    const { id } = useParams(); // Utilisation du hook useParams pour récupérer l'ID de la recette passé dans l'URL
+    const { id } = useParams<{ id: string }>(); // Récupération de l'ID passé dans l'URL
 
-    // fonction pour supprimer une recette de l'état favorites
-    const deleteRecipe = (index: number) => {
-        context.deleteFavoriteRecipe(index); // Appel de la fonction deleteFavoriteRecipe dans RecipeContext
+    const addToFavorites = (favorite: Favorite) => {
+        context.addFavoriteRecipe(favorite); // Appel de la fonction addFavoriteRecipe dans RecipeContext
     }
 
-    // Si aucune recette n'est présente dans l'état favorites, on affiche un message d'erreur
-    if (context.favorites.length === 0) {
-        return (
-            <div>
-                <h2>Favorites</h2>
-                <p>No favorite recipes found.</p>
-            </div>
-        );
-    }
+    return (
+        <div className="favorite-container">
+            <h2>Mes favoris</h2>
+            <RecipeList recipes={context.favorites} deleteRecipe={context.removeFavoriteRecipe} addToFavorites={addToFavorites} />
+        </div>
+    )
 };
 
 export default Favorites; // Exportation du composant Favorites comme exportation par défaut

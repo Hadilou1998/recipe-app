@@ -3,7 +3,22 @@ import { RecipeContext } from "../RecipeContext/Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-function RecipeList({ recipes, deleteRecipe }: { recipes: any[], deleteRecipe: (index: number) => void }) {
+interface Recipe {
+    id: number;
+    name: string;
+    cuisine: string;
+    photo: string;
+    ingredients: string[];
+    preparation: string[];
+}
+
+interface RecipeListProps {
+    recipes: Recipe[];
+    deleteRecipe: (id: number) => void;
+    addToFavorites: (favorite: Recipe) => void;
+}
+
+const RecipeList: React.FC<RecipeListProps> = ({ recipes, deleteRecipe, addToFavorites }) => {
 
     const context = useContext(RecipeContext);
 
@@ -40,39 +55,12 @@ function RecipeList({ recipes, deleteRecipe }: { recipes: any[], deleteRecipe: (
                                 <td>{recipe.ingredients.join(", ")}</td>
                                 <td>{recipe.preparation}</td>
                                 <td><button onClick={() => handleDelete(index)}>Supprimer</button></td>
+                                <td><button onClick={() => context.addToFavorites(recipe)}>Favoris</button></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-        </div>
-    )
-
-    return (
-        <div className="recipe-list">
-            <h2>Mes recettes</h2>
-            <div className="search-bar">
-                <input type="text" placeholder="Rechercher une recette..." />
-                <button>
-                    <FontAwesomeIcon icon={faSearch} />
-                </button>
-            </div>
-            <ul>
-                {recipes.map((recipe, index) => (
-                    <li key={index}>
-                        <div className="recipe-item">
-                            <div className="recipe-image">
-                                <img src={recipe.image} alt={recipe.name} />
-                            </div>
-                            <div className="recipe-details">
-                                <h3>{recipe.name}</h3>
-                                <p>{recipe.description}</p>
-                                <button onClick={() => handleDelete(index)}>Supprimer</button>
-                            </div>
-                        </div>
-                    </li>
-                ))}
-            </ul>
         </div>
     );
 };
