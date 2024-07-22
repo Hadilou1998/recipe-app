@@ -1,10 +1,15 @@
 import React, { useContext } from "react"; // Importation de React et du hook useContext
 import { useParams } from "react-router-dom"; // Importation du hook useParams de react-router-dom
 import RecipeContext from "../RecipeContext/Context"; // Importation de RecipeContext depuis le fichier de contexte
+import { Recipe } from "../FavoritesRecipes"; // Importation de la structure de données Recipe
 
-const RecipeDetail: React.FC = () => { // Définition du composant fonctionnel RecipeDetail avec le type React.FC
+interface RecipeDetailProps {
+    id: number; // ID de la recette
+    addToFavorites: (recipe: Recipe) => void; // Fonction pour ajouter une recette à
+}
 
-    const { id } = useParams<{ id: string }>(); // Utilisation du hook useParams pour obtenir l'ID de la recette depuis l'URL
+const RecipeDetail: React.FC<RecipeDetailProps> = ({ addToFavorites }) => { // Définition du composant RecipeDetail avec props
+
     const context = useContext(RecipeContext); // Utilisation du hook useContext pour accéder à RecipeContext
     
     return ( // Retourne le JSX à rendre
@@ -22,6 +27,7 @@ const RecipeDetail: React.FC = () => { // Définition du composant fonctionnel R
                         <p>Ingredients: {context.recipeDetail.ingredients.join(", ")}</p> {/* Affiche les ingrédients de la recette */}
                         <p>Preparation: {context.recipeDetail.preparation}</p> {/* Affiche la préparation de la recette */}
                     </div>
+                    <button onClick={() => addToFavorites(context.recipeDetail)}>Ajouter à mes favorites</button> {/* Bouton pour ajouter la recette à la liste des favorites */}
                 </div>
             )}
         </div>
