@@ -9,8 +9,25 @@ const FavoritesRecipes = () => {
 
   return (
     <div className="favorite-container">
+      <h1>Mes recettes favorites</h1>
+      <p>Voici les recettes que vous avez ajoutées aux favoris :</p>
       {context.favoriteRecipe.slice(0, 4).map((recipe: any, index: number) => (
         <div key={index} className="favorite-recipe">
+          <table>
+            <tbody>
+              <tr key={index}>
+                <td>{recipe.name}</td>
+                <td>{recipe.cuisine}</td>
+                <td><img src={recipe.photo} alt={recipe.name} width="100" height="100" /></td>
+                <td>
+                  <p>{recipe.ingredients.join(", ")}</p>
+                </td>
+                <td>
+                  <p>{recipe.preparation.join(", ")}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <RecipeList
             recipes={[recipe]}
             deleteRecipe={() => {}}
