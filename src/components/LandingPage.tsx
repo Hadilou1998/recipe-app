@@ -1,4 +1,3 @@
-import Favorites from "./FavoritesRecipes"; // Importation du composant Favorites
 import BoxLoading from "react-loading"; // Importation du composant BoxLoading pour l'affichage de la page de chargement
 import RecipeContext from "./RecipeContext/Context"; // Importation du contexte RecipeContext
 import { useContext, useState } from "react"; // Importation du contexte

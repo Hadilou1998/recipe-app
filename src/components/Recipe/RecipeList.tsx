@@ -3,28 +3,17 @@ import { RecipeContext } from "../RecipeContext/Context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-interface Recipe {
-    id: number;
-    name: string;
-    cuisine: string;
-    photo: string;
-    ingredients: string[];
-    preparation: string[];
-}
-
-interface RecipeListProps {
-    recipes: Recipe[];
-    deleteRecipe: (id: number) => void;
-    addToFavorites: (favorite: Recipe) => void;
-}
-
-const RecipeList: React.FC<RecipeListProps> = ({ recipes, deleteRecipe, addToFavorites }) => {
+function RecipeList({ recipes, deleteRecipe, addToFavorites }: { recipes: any[], deleteRecipe: (index: number) => void, addToFavorites: (index: number) => void }) {
 
     const context = useContext(RecipeContext);
 
-    const handleDelete = (index: number) => {
+    const handleRecipe = (index: number) => {
         deleteRecipe(index);
     };
+
+    const handleFavorite = (index: number) => {
+        addToFavorites(index);
+    }
 
     return (
         <div>
@@ -47,15 +36,19 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes, deleteRecipe, addToFav
                         </tr>
                     </thead>
                     <tbody>
-                        {recipes.map((recipe, index) => (
+                        {recipes.map((recipe: any, index: number) => (
                             <tr key={index} className={recipe.name === "Pizza au chou-fleur" ? "pizza" : recipe.name === "Galette de haricots rouges" ? "galette" : ""}>
                                 <td>{recipe.name}</td>
                                 <td>{recipe.cuisine}</td>
                                 <td><img src={recipe.photo} alt={recipe.name} width="100" height="100" /></td>
-                                <td>{recipe.ingredients.join(", ")}</td>
-                                <td>{recipe.preparation}</td>
-                                <td><button onClick={() => handleDelete(index)}>Supprimer</button></td>
-                                <td><button onClick={() => context.addToFavorites(recipe)}>Favoris</button></td>
+                                <td className="content_td">
+                                    <p>{recipe.ingredients.join(", ")}</p>
+                                </td>
+                                <td className="content_td">
+                                    <p>{recipe.preparation}</p>
+                                </td>
+                                <td><button onClick={() => handleRecipe(index)}>Supprimer</button></td>
+                                <td><button onClick={() => handleFavorite(index)}>Ajouter à mes favoris</button></td>
                             </tr>
                         ))}
                     </tbody>
